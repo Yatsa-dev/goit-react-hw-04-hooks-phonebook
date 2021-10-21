@@ -1,32 +1,39 @@
-import React, { Component } from 'react';
+/* eslint-disable react-hooks/rules-of-hooks */
+import { useState} from 'react';
 import { IoIosPersonAdd } from 'react-icons/io';
 import s from './ContactForm.module.css'
 
-export default class ContactForm extends Component{
-    state={
-    name: '',
-    number: ''
-    };
+export default function ContactForm ({onSubmit}) {
+  const [name, useName] = useState('');
+  const [number, useNumber] = useState('');
+  
+ function handleChange(event) {
+  const { name, value } = event.target;
+  
+    switch (name) {
+      case 'name':
+        useName(value);
+        break;
+      case 'number':
+        useNumber(value);
+        break;
+      default:
+        return;
+    }
+ };  
+  const handleSubmit = event => {
+      event.preventDefault();
+      onSubmit({name,number});
+      reset()
 
-      handleChange = event=>{
-        const {name,value}=event.currentTarget;
-        this.setState({[name]:value})
-      };
-      handleSubmit = event=>{
-        event.preventDefault();
-        this.props.onSubmit(this.state);
-        this.reset();
-      };
-      reset=()=>{
-        this.setState({name: '', number: ''})
-      }
+  };
+  const reset = () => {
+      useName('')
+      useNumber('')
+  };
 
-    render(){
-        const {handleChange,handleSubmit}=this;
-        const {name,number}=this.state;
-
-        return(
-            <form className={s.form} onSubmit={handleSubmit}>
+  return(
+    <form className={s.form} onSubmit={handleSubmit} >
             <label> 
             <span>Name</span>   
             <input
@@ -53,6 +60,5 @@ export default class ContactForm extends Component{
         </label>
             <button className={s.button}  type ="submit"><IoIosPersonAdd size ={50}/></button>
     </form>
-        );
-    }
-}
+  ) 
+};
