@@ -1,0 +1,42 @@
+.list{
+padding-left: 10px;
+}
+.item {
+  display: flex;
+  align-items: center;
+  width: 300px;
+  justify-content: space-between;
+  color: rgb(73, 112, 156);
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size:small;
+}
+
+.text {
+  display: block;
+  width: 120px;
+  margin: 0;
+  margin-right: 10px;
+  font-weight: 500;
+
+}
+
+span {
+  width: 100px;
+}
+.button {
+  transition: 0.2s; 
+  cursor: pointer;
+  outline: transparent;
+  background-color: transparent;
+  border: transparent;
+  color:black;
+  width: 20px;
+  height: 20px;
+
+}
+.button:hover {
+  color: rgb(204, 81, 50);
+}
+.button:active {
+  color: rgb(33, 147, 90);
+}
